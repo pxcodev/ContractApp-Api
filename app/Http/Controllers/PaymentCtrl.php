@@ -94,13 +94,16 @@ class PaymentCtrl extends Controller
 
             if ($paymentDataResult->delete !== 0) return Payment::error('Payment', 'Payment was previously eliminated', 423);
 
-            $routeFile = base_path('public') . $paymentDataResult->receipt;
-            $nameFile = explode('/', $paymentDataResult->receipt)[2];
-            $destinyFolder = './trash/';
-            !file_exists($destinyFolder) ? File::makeDirectory($destinyFolder) : false;
-            File::move($routeFile, $destinyFolder . $nameFile);
+            if ($paymentDataResult->receipt !== 'Not applicable') {
+                $routeFile = base_path('public') . $paymentDataResult->receipt;
+                $nameFile = explode('/', $paymentDataResult->receipt)[2];
+                $destinyFolder = './trash/';
+                !file_exists($destinyFolder) ? File::makeDirectory($destinyFolder) : false;
+                File::move($routeFile, $destinyFolder . $nameFile);
+                $paymentDataResult->receipt = ltrim($destinyFolder, '.') . $nameFile;
+            }
 
-            $paymentDataResult->receipt = ltrim($destinyFolder, '.') . $nameFile;
+
             $paymentDataResult->delete = 1;
             $paymentDataResult->save();
             return Payment::success('Payment', 'You have been successfully deleted', 200);

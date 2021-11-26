@@ -126,4 +126,25 @@ class AssignmentCtrl extends Controller
             return Worker::error('Internal error', $ex->getMessage(), 423);
         }
     }
+
+    public function searchAssignmentsWorker($id)
+    {
+        try {
+            $workerAssignment = Assignment::with(['contract.contractType', 'contract.contractStatus', 'contract.assistances'])->where('worker_id', $id)->get();
+            return Assignment::success('Assignment', 'The Contracts/Workers relationship has been updated successfully', 200, $workerAssignment->toArray());
+        } catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Assignment::error('Internal error', $ex->getMessage(), 423);
+        }
+    }
+    public function searchAssignmentsContract($id)
+    {
+        try {
+            $contractAssignment = Assignment::with(['worker.workerType', 'worker.assistances'])->where('contract_id', $id)->get();
+            return Assignment::success('Assignment', 'The Contracts/Workers relationship has been updated successfully', 200, $contractAssignment->toArray());
+        } catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Assignment::error('Internal error', $ex->getMessage(), 423);
+        }
+    }
 }

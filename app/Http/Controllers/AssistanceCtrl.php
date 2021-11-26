@@ -83,4 +83,25 @@ class AssistanceCtrl extends Controller
             return Worker::error('Internal error', $ex->getMessage(), 423);
         }
     }
+
+    public function searchAssistancesWorker($id)
+    {
+        try {
+            $workerAssistances = Assistance::with(['contract.contractType', 'contract.contractStatus'])->where('worker_id', $id)->get();
+            return Assistance::success('Assistance', 'The Contracts/Workers relationship has been updated successfully', 200, $workerAssistances->toArray());
+        } catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Assistance::error('Internal error', $ex->getMessage(), 423);
+        }
+    }
+    public function searchAssistancesContract($id)
+    {
+        try {
+            $contractAssistance = Assistance::with(['worker.workerType'])->where('contract_id', $id)->get();
+            return Assistance::success('Assistance', 'The Contracts/Workers relationship has been updated successfully', 200, $contractAssistance->toArray());
+        } catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Assistance::error('Internal error', $ex->getMessage(), 423);
+        }
+    }
 }

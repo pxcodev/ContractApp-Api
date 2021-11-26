@@ -49,6 +49,8 @@ $router->group(['prefix' => 'assistances'], function () use ($router) {
     $router->post('/', 'AssistanceCtrl@save');
     $router->get('/contracts', 'AssistanceCtrl@contractsAssistances');
     $router->get('/workers', 'AssistanceCtrl@workersAssistances');
+    $router->get('/searchAssistancesWorker/{id}', 'AssistanceCtrl@searchAssistancesWorker');
+    $router->get('/searchAssistancesContract/{id}', 'AssistanceCtrl@searchAssistancesContract');
     $router->get('/{id}/{assistance}', 'AssistanceCtrl@update');
 });
 
@@ -76,6 +78,8 @@ $router->group(['prefix' => 'assignment'], function () use ($router) {
     $router->get('/contracts', 'AssignmentCtrl@contractsAssignments');
     $router->get('/searchAvailableWorkers/{id}', 'AssignmentCtrl@searchAvailableWorkers');
     $router->get('/searchAvailableContracts/{id}', 'AssignmentCtrl@searchAvailableContracts');
+    $router->get('/searchAssignmentsWorker/{id}', 'AssignmentCtrl@searchAssignmentsWorker');
+    $router->get('/searchAssignmentsContract/{id}', 'AssignmentCtrl@searchAssignmentsContract');
     $router->get('/{id}', 'AssignmentCtrl@search');
     $router->post('/', 'AssignmentCtrl@save');
 });
