@@ -49,9 +49,10 @@ $router->group(['prefix' => 'assistances'], function () use ($router) {
     $router->post('/', 'AssistanceCtrl@save');
     $router->get('/contracts', 'AssistanceCtrl@contractsAssistances');
     $router->get('/workers', 'AssistanceCtrl@workersAssistances');
+    $router->post('/indexDateFilter', 'AssistanceCtrl@indexDateFilter');
     $router->get('/searchAssistancesWorker/{id}', 'AssistanceCtrl@searchAssistancesWorker');
     $router->get('/searchAssistancesContract/{id}', 'AssistanceCtrl@searchAssistancesContract');
-    $router->get('/indexDateFilter/{from}/{to}', 'AssistanceCtrl@indexDateFilter');
+
     $router->get('/{id}/{assistance}', 'AssistanceCtrl@update');
 });
 

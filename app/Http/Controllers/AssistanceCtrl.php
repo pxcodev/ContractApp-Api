@@ -26,14 +26,13 @@ class AssistanceCtrl extends Controller
         }
     }
 
-    public function indexDateFilter($from, $to)
+    public function indexDateFilter(Request $request)
     {
         try {
             // $from = date('2018-01-01');
-            // $to = date('2018-05-02');
-
+            // $to = date('2018-05-02')
             $contractAssistanceData = Assistance::with(['contract', 'contract.payments', 'worker'])
-                ->whereBetween('assistanceDate', [$from, $to])->get();
+                ->whereBetween('assistanceDate', [Carbon::parse($request->from)->format('Y-m-d'), Carbon::parse($request->to)->format('Y-m-d')])->get();
             return AssistanceResource::collection($contractAssistanceData);
         } catch (\Exception $ex) {
             Log::error($ex->getMessage());
