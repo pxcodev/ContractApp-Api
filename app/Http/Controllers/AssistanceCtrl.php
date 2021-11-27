@@ -18,7 +18,22 @@ class AssistanceCtrl extends Controller
     public function index()
     {
         try {
-            $contractAssistanceData = Assistance::with(['contract', 'worker'])->get();
+            $contractAssistanceData = Assistance::with(['contract', 'contract.payments', 'worker'])->get();
+            return AssistanceResource::collection($contractAssistanceData);
+        } catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Assistance::error('Internal error', $ex->getMessage(), 423);
+        }
+    }
+
+    public function indexDateFilter($from, $to)
+    {
+        try {
+            // $from = date('2018-01-01');
+            // $to = date('2018-05-02');
+
+            $contractAssistanceData = Assistance::with(['contract', 'contract.payments', 'worker'])
+                ->whereBetween('assistanceDate', [$from, $to])->get();
             return AssistanceResource::collection($contractAssistanceData);
         } catch (\Exception $ex) {
             Log::error($ex->getMessage());
