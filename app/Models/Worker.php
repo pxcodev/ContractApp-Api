@@ -26,6 +26,12 @@ class Worker extends Model
         return $this->hasMany('App\Models\Assignment');
     }
 
+    public function payrollPayment()
+    {
+        return $this->hasMany('App\Models\PayrollPayment');
+    }
+
+
     // protected $fillable = [];
 
     // public $timestamps = false;

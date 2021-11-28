@@ -22,6 +22,18 @@ class WorkerCtrl extends Controller
         }
     }
 
+    public function indexRelationships()
+    {
+        try {
+            // 'assistances', 'assistances.contract'
+            $workerData = Worker::with(['workerType', 'assistances', 'assignments.contract', 'payrollPayment'])->where('delete', 0)->get();
+            return WorkerResource::collection($workerData);
+        } catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Worker::error('Internal error', $ex->getMessage(), 423);
+        }
+    }
+
     public function search($id)
     {
         try {

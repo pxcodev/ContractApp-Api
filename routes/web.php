@@ -58,6 +58,7 @@ $router->group(['prefix' => 'assistances'], function () use ($router) {
 
 $router->group(['prefix' => 'workers'], function () use ($router) {
     $router->get('/', 'WorkerCtrl@index');
+    $router->get('/indexRelationships', 'WorkerCtrl@indexRelationships');
     $router->get('/trash', 'WorkerCtrl@trash');
     $router->get('/trash/{id}', 'WorkerCtrl@recover');
     $router->get('/worker/{id}', 'WorkerCtrl@search');
@@ -84,4 +85,14 @@ $router->group(['prefix' => 'assignment'], function () use ($router) {
     $router->get('/searchAssignmentsContract/{id}', 'AssignmentCtrl@searchAssignmentsContract');
     $router->get('/{id}', 'AssignmentCtrl@search');
     $router->post('/', 'AssignmentCtrl@save');
+});
+
+$router->group(['prefix' => 'payrollPayments'], function () use ($router) {
+    $router->get('/', 'PayrollPaymentCtrl@index');
+    $router->get('/trash', 'PayrollPaymentCtrl@trash');
+    $router->get('/trash/{id}', 'PayrollPaymentCtrl@recover');
+    $router->get('/{id}', 'PayrollPaymentCtrl@search');
+    $router->post('/', 'PayrollPaymentCtrl@saveBase64');
+    $router->delete('/{id}', 'PayrollPaymentCtrl@delete');
+    $router->post('/{id}', 'PayrollPaymentCtrl@update');
 });

@@ -36,6 +36,12 @@ class Contract extends Model
         return $this->hasMany('App\Models\Payment');
     }
 
+    public function payrollPayment()
+    {
+        return $this->hasMany('App\Models\PayrollPayment');
+    }
+
+
     // protected $fillable = [];
 
     // public $timestamps = false;
