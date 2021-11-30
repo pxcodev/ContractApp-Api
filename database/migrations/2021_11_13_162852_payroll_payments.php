@@ -15,8 +15,8 @@ class PayrollPayments extends Migration
     {
         Schema::create('payroll_payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('contract_id')->constrained('contracts');
             $table->foreignId('worker_id')->constrained('workers');
+            $table->foreignId('contract_id')->constrained('contracts');
             $table->Integer('paidHours');
             $table->decimal('amount', 10, 2);
             $table->date('date');

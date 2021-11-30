@@ -24,6 +24,7 @@ class PayrollPaymentResource extends JsonResource
                 'amount' => $this->amount,
                 'date' => $this->date,
                 'receipt' => $this->receipt,
+                'payment_method_id' => $this->payment_method_id,
                 'paymentMethod' => $this->whenLoaded('paymentMethod'),
                 'delete' => $this->delete,
                 'created_at'  => $this->formatTime($this->created_at),

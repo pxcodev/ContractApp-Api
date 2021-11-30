@@ -14,7 +14,7 @@ class PayrollPaymentCtrl extends Controller
     public function index()
     {
         try {
-            $payrollPayments = PayrollPayment::with('worker', 'contract')->where('payroll_payments.delete', '=', 0)->get();
+            $payrollPayments = PayrollPayment::with('paymentMethod', 'worker.assistances', 'contract')->where('payroll_payments.delete', '=', 0)->get();
             return PayrollPaymentResource::collection($payrollPayments);
         } catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -139,7 +139,7 @@ class PayrollPaymentCtrl extends Controller
     public function trash()
     {
         try {
-            $paymentsData = PayrollPayment::with('contract')->where('delete', 1)->get();
+            $paymentsData = PayrollPayment::with(['worker', 'contract'])->where('delete', 1)->get();
             return PayrollPaymentResource::collection($paymentsData);
         } catch (\Exception $ex) {
             Log::error($ex->getMessage());

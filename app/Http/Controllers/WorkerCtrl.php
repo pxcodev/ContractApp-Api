@@ -111,7 +111,7 @@ class WorkerCtrl extends Controller
     public function trash()
     {
         try {
-            $trashWorkers = Worker::with(['workerType', 'assistances', 'assistances.contract'])->where('delete', 1)->get();
+            $trashWorkers = Worker::with(['workerType'])->where('delete', 1)->get();
             return WorkerResource::collection($trashWorkers);
         } catch (\Exception $ex) {
             Log::error($ex->getMessage());

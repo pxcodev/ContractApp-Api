@@ -18,6 +18,14 @@ $router->group(['prefix' => 'contracts'], function () use ($router) {
     $router->post('/contract/{id}', 'ContractCtrl@update');
 });
 
+$router->group(['prefix' => 'payments/methods'], function () use ($router) {
+    $router->get('/', 'PaymentMethodCtrl@index');
+    $router->get('/{id}', 'PaymentMethodCtrl@search');
+    $router->post('/', 'PaymentMethodCtrl@save');
+    $router->delete('/{id}', 'PaymentMethodCtrl@delete');
+    $router->post('/{id}', 'PaymentMethodCtrl@update');
+});
+
 $router->group(['prefix' => 'payments'], function () use ($router) {
     $router->get('/', 'PaymentCtrl@index');
     $router->get('/trash', 'PaymentCtrl@trash');
@@ -27,6 +35,8 @@ $router->group(['prefix' => 'payments'], function () use ($router) {
     $router->delete('/{id}', 'PaymentCtrl@delete');
     $router->post('/{id}', 'PaymentCtrl@update');
 });
+
+
 
 $router->group(['prefix' => 'contracts/status'], function () use ($router) {
     $router->get('/', 'ContractStatusCtrl@index');

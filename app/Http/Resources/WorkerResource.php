@@ -36,7 +36,7 @@ class WorkerResource extends JsonResource
             'relationships' => [
                 'assistances' => AssistanceResource::collection($this->whenLoaded('assistances')),
                 'assignments' => AssignmentsResource::collection($this->whenLoaded('assignments')),
-                'payrollPayment' => AssignmentsResource::collection($this->whenLoaded('payrollPayment')),
+                'payrollPayment' => PayrollPaymentResource::collection($this->whenLoaded('payrollPayment')),
             ]
         ];
     }

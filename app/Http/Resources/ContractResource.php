@@ -35,7 +35,8 @@ class ContractResource extends JsonResource
             'relationships' => [
                 'assistances' => AssistanceResource::collection($this->whenLoaded('assistances')),
                 'assignments' => AssignmentsResource::collection($this->whenLoaded('assignments')),
-                'payments' => PaymentResource::collection($this->whenLoaded('payments'))
+                'payments' => PaymentResource::collection($this->whenLoaded('payments')),
+                'payrollPayment' => PayrollPaymentResource::collection($this->whenLoaded('payrollPayment')),
             ]
         ];
     }

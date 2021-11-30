@@ -104,7 +104,7 @@ class AssignmentCtrl extends Controller
     public function contractsAssignments()
     {
         try {
-            $contractsAssignments = Contract::with(['assignments'])->whereHas('assignments', function (Builder $query) {
+            $contractsAssignments = Contract::with(['assignments.worker.payrollPayment'])->whereHas('assignments', function (Builder $query) {
                 $query->where('delete', '=', 0);
             })->get();
             return ContractResource::collection($contractsAssignments);
@@ -117,7 +117,7 @@ class AssignmentCtrl extends Controller
     public function workersAssignments()
     {
         try {
-            $workersAssignments = Worker::with(['assignments.contract'])->whereHas('assignments', function (Builder $query) {
+            $workersAssignments = Worker::with(['assignments.contract.payrollPayment'])->whereHas('assignments', function (Builder $query) {
                 $query->where('delete', '=', 0);
             })->get();
             return WorkerResource::collection($workersAssignments);
@@ -130,7 +130,7 @@ class AssignmentCtrl extends Controller
     public function searchAssignmentsWorker($id)
     {
         try {
-            $workerAssignment = Assignment::with(['contract.contractType', 'contract.contractStatus', 'contract.assistances'])->where('worker_id', $id)->get();
+            $workerAssignment = Assignment::with(['contract.contractType', 'contract.contractStatus', 'contract.assistances', 'contract.payrollPayment'])->where('worker_id', $id)->get();
             return Assignment::success('Assignment', 'The Contracts/Workers relationship has been updated successfully', 200, $workerAssignment->toArray());
         } catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -140,7 +140,7 @@ class AssignmentCtrl extends Controller
     public function searchAssignmentsContract($id)
     {
         try {
-            $contractAssignment = Assignment::with(['worker.workerType', 'worker.assistances'])->where('contract_id', $id)->get();
+            $contractAssignment = Assignment::with(['worker.workerType', 'worker.assistances', 'worker.payrollPayment'])->where('contract_id', $id)->get();
             return Assignment::success('Assignment', 'The Contracts/Workers relationship has been updated successfully', 200, $contractAssignment->toArray());
         } catch (\Exception $ex) {
             Log::error($ex->getMessage());

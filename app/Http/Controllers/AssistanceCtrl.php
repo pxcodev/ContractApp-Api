@@ -31,7 +31,7 @@ class AssistanceCtrl extends Controller
         try {
             // $from = date('2018-01-01');
             // $to = date('2018-05-02')
-            $contractAssistanceData = Assistance::with(['contract', 'contract.payments', 'worker'])
+            $contractAssistanceData = Assistance::with(['contract', 'contract.payments', 'worker.payrollPayment'])
                 ->whereBetween('assistanceDate', [Carbon::parse($request->from)->format('Y-m-d'), Carbon::parse($request->to)->format('Y-m-d')])->get();
             return AssistanceResource::collection($contractAssistanceData);
         } catch (\Exception $ex) {
