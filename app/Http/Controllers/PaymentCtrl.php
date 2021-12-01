@@ -139,7 +139,7 @@ class PaymentCtrl extends Controller
                 $image = str_replace(' ', '+', $image);
                 $imageName = Carbon::now()->timestamp . "_" . $originalName . '.' . $ext;
                 !file_exists($destinyFolder) ? File::makeDirectory($destinyFolder) : false;
-                File::put(base_path('public') . $destinyFolder . $imageName, base64_decode($image));
+                File::put(base_path('public') . ltrim($destinyFolder, '.') . $imageName, base64_decode($image));
                 $receipt = ltrim($destinyFolder, '.') . $imageName;
             };
 
