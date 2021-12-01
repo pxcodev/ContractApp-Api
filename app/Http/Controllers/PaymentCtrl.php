@@ -99,7 +99,7 @@ class PaymentCtrl extends Controller
                 $nameFile = explode('/', $paymentDataResult->receipt)[2];
                 $destinyFolder = './trash/';
                 !file_exists($destinyFolder) ? File::makeDirectory($destinyFolder) : false;
-                File::move($routeFile, $destinyFolder . $nameFile);
+                File::move($routeFile, ltrim($destinyFolder, '.') . $nameFile);
                 $paymentDataResult->receipt = ltrim($destinyFolder, '.') . $nameFile;
             }
 
@@ -175,7 +175,7 @@ class PaymentCtrl extends Controller
                 $nameFile = explode('/', $paymentDataResult->receipt)[2];
                 $destinyFolder = './upload/';
                 !file_exists($destinyFolder) ? File::makeDirectory($destinyFolder) : false;
-                File::move($routeFile, $destinyFolder . $nameFile);
+                File::move($routeFile, ltrim($destinyFolder, '.') . $nameFile);
                 $paymentDataResult->receipt = ltrim($destinyFolder, '.') . $nameFile;
             }
             $paymentDataResult->delete = 0;

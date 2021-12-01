@@ -48,7 +48,7 @@ class PayrollPaymentCtrl extends Controller
                 $image = str_replace(' ', '+', $image);
                 $imageName = Carbon::now()->timestamp . "_" . $originalName . '.' . $ext;
                 !file_exists($destinyFolder) ? File::makeDirectory($destinyFolder) : false;
-                File::put(base_path('public') . $destinyFolder . $imageName, base64_decode($image));
+                File::put(base_path('public') . ltrim($destinyFolder, '.') . $imageName, base64_decode($image));
                 $receipt = ltrim($destinyFolder, '.') . $imageName;
             }
             $paymentData->worker_id = $request->worker_id;
@@ -78,7 +78,7 @@ class PayrollPaymentCtrl extends Controller
                 $nameFile = explode('/', $paymentDataResult->receipt)[2];
                 $destinyFolder = './trash/';
                 !file_exists($destinyFolder) ? File::makeDirectory($destinyFolder) : false;
-                File::move($routeFile, $destinyFolder . $nameFile);
+                File::move($routeFile, ltrim($destinyFolder, '.') . $nameFile);
                 $paymentDataResult->receipt = ltrim($destinyFolder, '.') . $nameFile;
             }
 
@@ -118,7 +118,7 @@ class PayrollPaymentCtrl extends Controller
                 $image = str_replace(' ', '+', $image);
                 $imageName = Carbon::now()->timestamp . "_" . $originalName . '.' . $ext;
                 !file_exists($destinyFolder) ? File::makeDirectory($destinyFolder) : false;
-                File::put(base_path('public') . $destinyFolder . $imageName, base64_decode($image));
+                File::put(base_path('public') . ltrim($destinyFolder, '.') . $imageName, base64_decode($image));
                 $receipt = ltrim($destinyFolder, '.') . $imageName;
             };
 
@@ -157,7 +157,7 @@ class PayrollPaymentCtrl extends Controller
                 $nameFile = explode('/', $paymentDataResult->receipt)[2];
                 $destinyFolder = './upload/';
                 !file_exists($destinyFolder) ? File::makeDirectory($destinyFolder) : false;
-                File::move($routeFile, $destinyFolder . $nameFile);
+                File::move($routeFile, ltrim($destinyFolder, '.') . $nameFile);
                 $paymentDataResult->receipt = ltrim($destinyFolder, '.') . $nameFile;
             }
             $paymentDataResult->delete = 0;
