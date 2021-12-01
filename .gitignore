@@ -3,6 +3,7 @@
 Homestead.json
 Homestead.yaml
 .env
+.env.production
 .phpunit.result.cache
 /public/upload
 /public/trash
