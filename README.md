@@ -2,7 +2,7 @@
 
 ### Api designed to manage all the data requested by the Contract App application.
 
-## Tecnologia de desarrollo
+## Development technology
 
 -   Laravel Lumen
 
