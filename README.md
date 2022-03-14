@@ -1,24 +1,60 @@
-# Lumen PHP Framework
+# Api Rest for the Contract App
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+### Api designed to manage all the data requested by the Contract App application.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## EndPoints
 
-## Official Documentation
+**CONTRACTS**
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+-   **GET**
 
-## Contributing
+    -   /contracts: Obtaining contracts
+    -   /contracts/trash: Obtaining contracts in garbage
+    -   /contracts/trash/id(number): Recovering a specific waste contract
+    -   /contracts/contract/id: Obtain a specific contract
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   **POST**
+    -   /contracts: Add contract
+    -   /contracts/contract/id: Update contract
+-   **DEL**
+    -   /contracts/id: Delete contract
 
-## Security Vulnerabilities
+**CONTRACT STATUS**
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+-   **GET**
+    -   /contracts/status: Obtain status
+    -   /contracts/status/id: Obtain a status
+-   **POST**
+    -   /contracts/status: Add status
+    -   /contracts/status/id: Maintain a status
+-   **DEL**
+    -   /contracts/status/id: Drilling status
 
-## License
+**CONTRACT TYPE**
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   **GET**
+    -   /contracts/types: Get type
+    -   /contracts/types/id: Get a type
+-   **POST**
+    -   /contracts/types: Add type
+    -   /contracts/types/id: update type
+-   **DEL**
+    -   /contracts/types/id: delete type
+
+**WORKERS**
+
+-   **GET**
+
+    -   /workers: Obtaining workers
+
+    *   /workers/indexRelationships: Obtain workers with data relationships
+
+    -   /workers/trash: Obtaining garbage workers
+    -   /workers/trash/id(number): Recover a specific waste worker
+    -   /workers/worker/id: Obtain a specific worker
+
+-   **POST**
+    -   /workers: Add worker
+    -   /workers/contract/id: Update worker
+-   **DEL**
+    -   /workers/id: Delete worker

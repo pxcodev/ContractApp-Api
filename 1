@@ -1,0 +1,65 @@
+[33mcommit cec35b5933105cf3c2ade5b2949e163f1b6e63a2[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m, [m[1;32mmaster[m[33m)[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Wed Dec 1 09:42:08 2021 -0400
+
+    remove (.) all destiny folders
+
+[33mcommit 8a80af9fef34e6efb2830a5d71cc9ea6f20478d1[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Wed Dec 1 09:35:54 2021 -0400
+
+    remove (.) update file
+
+[33mcommit 5b69fd378455776e74522a134f26a7db2604817b[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Wed Dec 1 09:27:39 2021 -0400
+
+    remove (.) destinyFolder file
+
+[33mcommit 6445aab1e7348b22e8cc56946c0c0b1d2db1bdcf[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Wed Dec 1 09:05:32 2021 -0400
+
+    faker package moved to required section
+
+[33mcommit 246c5a484a9c6a61d205cd5af5749ad4ec249eed[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Wed Dec 1 08:17:33 2021 -0400
+
+    Procfile add
+
+[33mcommit f217675a015371774ebc4b801677c486825c1905[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Tue Nov 30 01:21:04 2021 -0400
+
+    payrollPayment ready
+
+[33mcommit 52fee5397f24b185393a8ac29b7065ae822a1533[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Sun Nov 28 15:05:55 2021 -0400
+
+    payrollPayments with paymentMethod ready
+
+[33mcommit 9274fadb71672aeb7a7d57fca29f9e476a1ba6b4[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Sat Nov 27 04:20:12 2021 -0400
+
+    indexDateFilter ready
+
+[33mcommit 7338c4c1a60930b03c00a60bc673b3e89f1139b4[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Fri Nov 26 23:43:42 2021 -0400
+
+    indexDateFilter assistances ready
+
+[33mcommit 1822530aae814c70f678dd1de0815f3f4bdc3e5b[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Thu Nov 25 23:34:56 2021 -0400
+
+    payment delete emply file fixed and search assignment of worker and contract with assistances ready
+
+[33mcommit 9e1cf23607dd33710de7a2c3dc37fff852961808[m
+Author: vectonix <vectonixpixelca@gmail.com>
+Date:   Thu Nov 25 02:16:17 2021 -0400
+
+    first commit
