@@ -2,6 +2,10 @@
 
 ### Api designed to manage all the data requested by the Contract App application.
 
+## Tecnologia de desarrollo
+
+-   Laravel Lumen
+
 ## EndPoints
 
 **CONTRACTS**
